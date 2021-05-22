@@ -161,7 +161,7 @@ class HomePage extends React.Component {
         let datas = [...this.state.mData]
         for (let i = 0; i < datas.length; i++) {
           if (datas[i].id === staff.id) {
-            //如果相等，表示更新该条数据
+            //如果相等，表示更新该条
             datas[i] = staff
             this.setState({
               mData: datas,
