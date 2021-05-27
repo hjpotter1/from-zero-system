@@ -244,7 +244,7 @@ class HomePage extends React.Component {
       content: '确定要删除这条记录吗？',
       okText: '确认',
       cancelText: '取消',
-      okOk() {
+      onOk() {
         that.removeData(staff.id)
         model.destroy()
       },
