@@ -161,7 +161,7 @@ class HomePage extends React.Component {
         let datas = [...this.state.mData]
         for (let i = 0; i < datas.length; i++) {
           if (datas[i].id === staff.id) {
-            //如果相等，表示更新该条
+            //如果相等，表示更新该条 如果相等，表示更新这条。filco的键盘的延迟感是最低的，
             datas[i] = staff
             this.setState({
               mData: datas,
@@ -238,15 +238,15 @@ class HomePage extends React.Component {
   }
 
   deleteConfirm = (staff) => {
-    var that = this // 下面的内嵌对象里面，this就改变了，这里在外面存一下。
-    const modal = Modal.confirm({
+    var that = this
+    const model = Modal.confirm({
       title: '确认',
       content: '确定要删除这条记录吗？',
       okText: '确认',
       cancelText: '取消',
-      onOk() {
+      okOk() {
         that.removeData(staff.id)
-        modal.destroy()
+        model.destroy()
       },
       onCancel() {},
     })

@@ -35,5 +35,12 @@ def getStaffList(job):
     return json.dumps(jsonStaffs)
 
 
+@app.route(apiPrefix + 'deleteStaff/<int:id>')
+def deleteStaff(id):
+    print("delete")
+    re = DBUtil.deleteStaff(id)
+    return re
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=5001)

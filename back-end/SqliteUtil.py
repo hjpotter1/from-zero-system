@@ -120,6 +120,22 @@ def addOrUpdateStaff(json_str):
 
 def deleteStaff(id):
     # 根据staff的id号来删除该条记录
+    # try:
+    #     sql = "delete from t_staff where id=%d" % (id)
+    #     print(sql)
+    #     cursor.execute(sql)
+    #     conn.commit()
+    #     re = {
+    #         'code': 0,
+    #         'message': '删除成功',
+    #     }
+    #     return json.dumps(re)
+    # except Exception as e:
+    #     re = {
+    #         'code': -1,
+    #         'message': repr(e)
+    #     }
+    #     return json.dumps(re)
     try:
         sql = "delete from t_staff where id=%d" % (id)
         print(sql)
