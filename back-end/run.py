@@ -1,3 +1,4 @@
+from array import array
 from flask import Flask, request
 import os
 import json
@@ -31,7 +32,7 @@ def getStaffList(job):
     # [('1', '1', '1', '1', '1'), ('1', '1', '2', '3', '4'), ...] 二维数组
     array = DBUtil.getStaffList(job)
     jsonStaffs = DBUtil.getStaffsFromData(array)
-    print("jsonStaffs:", jsonStaffs)
+    print("后端数据jsonStaffs:", jsonStaffs)
     return json.dumps(jsonStaffs)
 
 
@@ -39,6 +40,17 @@ def getStaffList(job):
 def deleteStaff(id):
     print("delete")
     re = DBUtil.deleteStaff(id)
+    return re
+
+
+@app.route(apiPrefix + 'searchStaff_3')
+def searchStaff_3():
+    data = request.args.get('where')
+    print('searchStaff_3', data)
+    where = json.load(data)
+    array = DBUtil.searchStaff_3(where)
+    jsonStaffs = DBUtil.getStaffsFromData_3(array)
+    re = json.dumps(jsonStaffs)
     return re
 
 

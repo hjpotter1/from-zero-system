@@ -50,6 +50,42 @@ class InfoDialog extends React.Component {
       visible: false,
     })
   }
+  searchItems = {}
+
+  // handleTextChange = (e) => {
+  //   let attr = e.target.getAttribute('item')
+  //   if (attr) {
+  //     this.searchItems[attr] = e.target.value
+  //     // console.log(attr +':'+ e.target.value);
+  //   }
+  // }
+  handleTextChange = (e) => {
+    let attr = e.target.getAttribute('item')
+    if (attr) {
+      this.searchItems[attr] = e.target.value
+    }
+  }
+
+  handleSearch = () => {
+    // console.log("hi",this.searchItems);
+    let where = JSON.stringify(this.searchItems)
+    let url = ApiUtil.API_STAFF_SEARCH_3 + '?where=' + encodeURI(where)
+    HttpUtil.get(url).then((res) => {
+      // console.log(res); // ["2", "2", "2"]  ("card_number", "name", "phone")
+      var tmp
+      if (res !== null) {
+        tmp = res
+      } else {
+        tmp = ['', '', '']
+      }
+      this.props.form.setFieldsValue({
+        card_number: tmp[0],
+        name: tmp[1],
+        phone: tmp[2],
+      })
+    })
+  }
+
   render() {
     const { visible } = this.state
     const { getFieldDecorator } = this.props.form

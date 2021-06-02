@@ -241,7 +241,7 @@ class HomePage extends React.Component {
     var that = this
     const model = Modal.confirm({
       title: '确认',
-      content: '确定要删除这条记录吗？',
+      content: '确定要删除这条记录吗1？',
       okText: '确认',
       cancelText: '取消',
       onOk() {
